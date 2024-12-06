@@ -19,7 +19,7 @@ const gene = function* (arr) {
 console.log(gene(items)); //Object [Generator] {} //输出生成器对象本身，而不是生成器产生的值;
 
 // 使用for..of展开生成的对象
-for (var f of gene(items)) {
+for (const f of gene(items)) {
     console.log(f);
 }
 // 使用...展开对象
