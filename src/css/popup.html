@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function showPopup() {
+            document.getElementById('popup').classList.add('active');
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').classList.remove('active');
+        }
+    </script>
+    <div class="container">
+        <button onclick="showPopup()">Show Popup</button>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="content">
+            底部浮层
+            <button onclick="hidePopup()">Close</button>
+        </div>
+    </div>
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .popup {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            background: rgba(0, 0, 0, .5);
+            overflow: hidden;
+            /* 显隐控制关键CSS代码 */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .2s, visibility .2s;
+        }
+
+        .content {
+            /* 底部浮层移入移出控制关键CSS代码 */
+            transform: translateY(100%);
+            transition: transform 10s;
+        }
+
+        /* 通过切换“active”类名实现交互效果 */
+        .popup.active {
+            transition-property: opacity;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .active>.content {
+            transform: translateY(0%);
+        }
+    </style>
+</body>
+
+</html>

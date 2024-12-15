@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Gradient</title>
+</head>
+
+<body>
+    <div class="example1">
+    </div>
+    <div class="example2">
+    </div>
+    <div class="example3">
+    </div>
+    <div class="example4">
+    </div>
+    <div class="example5">
+    </div>
+</body>
+<style>
+    /* .container {
+
+    } */
+    .example1 {
+        width: 300px;
+        height: 150px;
+        border: solid deepskyblue;
+        /* 颜色停靠点 */
+        background-image: linear-gradient(45deg, white 100px, skyblue 100px 150px, white 150px);
+    }
+
+    .example2 {
+        height: 50px;
+        background-image: linear-gradient(0deg, white 0px, skyblue 100px);
+    }
+
+    .example3 {
+        height: 50px;
+        /* 这样的话，是均分的 */
+        background-image: linear-gradient(to right, red, orange, yellow, green);
+    }
+
+    .example4 {
+        height: 50px;
+        background-image: linear-gradient(to left, white 25%, skyblue 50%, orange 75%);
+    }
+
+    .example5 {
+        line-height: 40px;
+        background-color: #eee;
+    }
+
+    .example5::before {
+        counter-reset: progres var(--percent);
+        content: counter(progres) "%\2002";
+        display: block;
+        width: calc(var(--percent) * 1%);
+        background-color: deepskyblue;
+        --percent: 50;
+    }
+</style>
+<script>
+</script>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="example1"></div>
+    <div class="example2">
+        <div>1111</div>
+    </div>
+    <div class="popup">
+        <div class="content">底部浮层</div>
+    </div>
+
+</body>
+<style>
+    .example1 {
+        height: 5rem;
+        background-image: linear-gradient(to right, white, black);
+        transform: translateX(0);
+        /* 最终过渡执行的时间等于动画过程时间加动画延时时间，也就是1 + (-0.5) = 0.5 */
+        transition-duration: 1s;
+        transition-delay: -0.5s;
+    }
+
+    .example1:hover {
+        transform: translateX(100px);
+    }
+
+    .example2 {
+        height: 10rem;
+    }
+
+    /* 在transition里面加上，hover里面的动画 */
+    /* .example2 div表示所有后代 */
+    .example2 div {
+        visibility: hidden;
+        height: 100%;
+        background-color: brown;
+        /* 一个显示动画，一个bg动画 */
+        transition: visibility .1s .1s, background-color 1s .1s;
+    }
+
+    /* 加号表示紧贴靠近的第一个 */
+    .example2:hover div {
+        visibility: visible;
+        background-color: rgb(54, 165, 42);
+    }
+
+    .popup {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 100;
+        /* height: 20rem; */
+        background: rgba(0, 0, 0, .5);
+        overflow: hidden;
+        /* 显隐控制关键CSS代码 */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .2s, visibility .2s;
+    }
+
+    .content {
+        /* 底部浮层移入移出控制关键CSS代码 */
+        transform: translateY(100%);
+        transition: transform .2s;
+    }
+
+    /* 通过切换“active”类名实现交互效果 */
+    .popup.active {
+        transition-property: opacity;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .active>.content {
+        transform: translateY(0%);
+    }
+</style>
+
+</html>
