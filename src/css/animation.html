@@ -9,11 +9,18 @@
 
 <body>
     <div class="fade-in"></div>
+    <div class="element"></div>
     <style>
         .fade-in {
             animation: fadeIn infinite 3s;
             background-color: sandybrown;
             height: 20rem;
+        }
+        /**/
+        .element {
+            animation: fadeIn infinite 2s, slideInRight infinite 2s;
+            height: 20rem;
+            background-color: rgb(45, 172, 45);
         }
 
         @keyframes fadeIn {
@@ -23,6 +30,16 @@
 
             to {
                 opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateY(50%);
+            }
+
+            to {
+                transform: translateY(0%);
             }
         }
     </style>
