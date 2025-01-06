@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- 这里实现的是一个周围炫酷发光的按钮 -->
+
+<body>
+    <div class="container">
+        <button class="glow-button">
+
+        </button>
+    </div>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .glow-button {
+            box-sizing: border-box;
+            width: 30vw;
+            height: 5vh;
+
+            position: relative;
+            padding: 15px 30px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            overflow: hidden;
+            /* 主要发光效果 */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+
+        /* 添加发光动画 */
+        /* 使用伪元素来加载动画，防止影响别的样式 */
+        /* 这里不是给border加渐变，而是使用绝对定位的伪元素 */
+        .glow-button::before {
+            content: '';
+            /* 像外偏移2px */
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg,
+                    #00ffff,
+                    /* 青色 */
+                    #ff00ff,
+                    /* 紫色 */
+                    #00ffff
+                    /* 青色 */
+                );
+            border-radius: 10px;
+            z-index: -1;
+            animation: glowing 3s linear infinite;
+        }
+
+        @keyframes glowing {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        /* 悬停效果，给更深的光 */
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+        }
+    </style>
+</body>
+✅ 推荐使用 absolute 的情况：
+需要精确定位
+创建覆盖效果
+需要层叠显示
+不想影响其他元素布局
+<br />
+❌ 不推荐使用 absolute 的情况：
+简单的内容前缀/后缀
+基础的装饰效果
+需要保持在文档流中的元素
+
+</html>
